@@ -132,29 +132,29 @@ int main()
 		scanf("%d",&ch);
 		switch(ch)
 		{
-			case 1:printf("Enter an element:");
-				   scanf("%d",&ele);
-				   insert(ele);
-				   print_();
-				   break;
+		        case 1:printf("Enter an element:");
+			       scanf("%d",&ele);
+		      	       insert(ele);
+			       print_();
+			       break;
 			case 2:printf("Enter the index of element you want to remove:");
-				   scanf("%d",&in);
-				   remove_(in);
-				   print_();
-				   break;
+			       scanf("%d",&in);
+		               remove_(in);
+		               print_();
+			       break;
 			case 3:max=extractMax();
-				   printf("%d\n",max);
-				   print_();
-				   break;
+		               printf("%d\n",max);
+			       print_();
+			       break;
 			case 4:printf("Enter the index of the element and its new priority:");
-				   scanf("%d%d",&in,&ele);
-				   changePriority(i,ele);
-				   print_();
-				   break;
+			       scanf("%d%d",&in,&ele);
+		               changePriority(i,ele);
+			       print_();
+			       break;
 			case 5:print_();
-				   break;
+			       break;
 			case 6:i++;
-				   break;
+			       break;
 		}
 	}
 	return 0;

@@ -302,86 +302,86 @@ int main()
 		switch(ch)
 		{
 			case 1:printf("Enter the node key:");
-				   scanf("%d",&k);
-				   if(t)
-				   {
-					   ro=k;
-					   root=insert(root,k);
-					   t=0;
-				   }
-				   else
-				   insert(root,k);
-				   preorder(root);
-				   printf("\n");
-				   break;
+			       scanf("%d",&k);
+			       if(t)
+			       {
+				 ro=k;
+				 root=insert(root,k);
+			         t=0;
+			       }
+			       else
+			       insert(root,k);
+			       preorder(root);
+			       printf("\n");
+		               break;
 			case 2:printf("Enter the node to be deleted:");
-				   scanf("%d",&k);
-				   if(ro==k)
-				   {
-					   n=find(root,k);
-					   root=delete(root,n);
-					   if(root!=NULL)
-					   ro=root->key;
-				   }
-				   else
-				   {
-					   n=find(root,k);
-					   delete(root,n);
-				   }
-				   preorder(root);
-				   printf("\n");
-				   break;
+			       scanf("%d",&k);
+			       if(ro==k)
+			       {
+			         n=find(root,k);
+			         root=delete(root,n);
+			         if(root!=NULL)
+			         ro=root->key;
+			       }
+			       else
+			       {
+				n=find(root,k);
+				delete(root,n);
+			       }
+				preorder(root);
+				printf("\n");
+				break;
 			case 3:printf("Enter the range:");
-				   scanf("%d%d",&a,&b);
-				   search(root,a,b);
-				   break;
+			       scanf("%d%d",&a,&b);
+			       search(root,a,b);
+			       break;
 			case 4:printf("Enter the node to find:");
-				   scanf("%d",&k);
-				   f=1;
-				   n=find(root,k);
-				   if(n==NULL)
-				   printf("NOT PRESENT\n");
-				   else
-				   printf("PRESENT\n");
-				   f=0;
-				   break;
+			       scanf("%d",&k);
+			       f=1;
+			       n=find(root,k);
+			       if(n==NULL)
+		               printf("NOT PRESENT\n");
+			       else
+			       printf("PRESENT\n");
+			       f=0;
+			       break;
 			case 5:printf("Enter the node:");
-				   scanf("%d",&k);
-				   f=1;
-				   n=find(root,k);
-				   if(n!=NULL)
-				   {
-					   n=next(n);
-					   if(n!=NULL)
-					   printf("%d\n",n->key);
-				     else
-					   printf("IT IS THE LARGEST ELEMENT\n");
-					   f=0;
-				   }
-				   else
-				   {
-					   f=0;
-					   n=find(root,k);
-					   if(n->key>k)
-					   printf("%d\n",n->key);
-					   else
-					   {
-						   n=next(n);
-						   printf("%d\n",n->key);
-					   }
-				   }
+			       scanf("%d",&k);
+			       f=1;
+			       n=find(root,k);
+			       if(n!=NULL)
+			       {
+		                n=next(n);
+				if(n!=NULL)
+				printf("%d\n",n->key);
+				else
+			        printf("IT IS THE LARGEST ELEMENT\n");
+		                f=0;
+			       }
+			       else
+			       {
+			         f=0;
+				 n=find(root,k);
+				 if(n->key>k)
+				 printf("%d\n",n->key);
+				 else
+				 {
+				   n=next(n);
+				   printf("%d\n",n->key);
+				 }
+				}
 				   break;
 			case 6:inorder(root);
-				   printf("\n");
-				   break;
+			       printf("\n");
+			       break;
 			case 7:preorder(root);
-				   printf("\n");
-				   break;
+			       printf("\n");
+			       break;
 			case 8:postorder(root);
-				   printf("\n");
-				   break;
+			       printf("\n");
+			       break;
 			case 9:i=0;
-				   break;
+			       break;
 
 		}
 	}

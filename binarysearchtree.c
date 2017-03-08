@@ -25,6 +25,23 @@ NODEPTR n;
 	free(n);
 	return 0;
 }
+//FUNCTION TO FIND THE HEIGHT OF A NODE IN THE TREE(HEIGHT OF LEAF IS 1)
+int height(n)
+NODEPTR n;
+{
+	int hl,hr;
+	if(n==NULL)
+	return 0;
+	else
+	{
+		hl=height(n->right);
+		hr=height(n->left);
+		if(hl>hr)
+		return (1+hl);
+		else
+		return (1+hr);
+	} 
+}
 //RECURSIVE FUNCTION TO CHECK WHETHER A NODE IS PRESENT OR NOT OR TO RETURN THE PARENT OF A NEW NODE AS PER THE USER CHOICE
 NODEPTR find(r,k)
 NODEPTR r;

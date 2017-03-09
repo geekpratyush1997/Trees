@@ -16,6 +16,9 @@ struct node{
 NODEPTR getnode()
 {
 	NODEPTR p=(NODEPTR) malloc(sizeof(struct node));
+	p->left=NULL;
+	p->right=NULL;
+	p->parent=NULL;
 	return p;
 }
 //FUNCTION TO FREE A NODE AFTER BEING DELETED
@@ -25,13 +28,13 @@ NODEPTR n;
 	free(n);
 	return 0;
 }
-//FUNCTION TO FIND THE HEIGHT OF A NODE IN THE TREE(HEIGHT OF LEAF IS 1)
+//FUNCTION TO FIND THE HEIGHT OF A NODE IN THE TREE(HEIGHT OF LEAF IS 0)
 int height(n)
 NODEPTR n;
 {
 	int hl,hr;
 	if(n==NULL)
-	return 0;
+	return -1;
 	else
 	{
 		hl=height(n->right);
@@ -86,7 +89,7 @@ int k;
 	n->left=NULL;
 	if(r==NULL)//WHEN THE TREE IS EMPTY
 	{
-		n->parent=n;
+		n->parent=NULL;
 		return n;
 	}
 	n1=find(r,k);//TO FIND THE PARENT
@@ -113,7 +116,7 @@ NODEPTR n;
 	if(n->key<(n->parent)->key)
 	return n->parent;
 	else
-	if(n==n->parent)//WHEN IT IS THE ROOT ITSELF
+	if(n->parent==NULL)//WHEN IT IS THE ROOT ITSELF
 	return NULL;
 	else
 	return rightancestor(n->parent);
@@ -144,7 +147,7 @@ NODEPTR n,r;
 		if(n->right==NULL)//WHEN THE RIGHT SUB-TREE OF THE ROOT IS ABSENT
 		{
 			n1=n->left;
-			n1->parent=n1;
+			n1->parent=NULL;
 			freenode(n);
 			return n1;
 		}
@@ -152,7 +155,7 @@ NODEPTR n,r;
 		if(n->left==NULL)//WHEN THE LEFT SUB-TREE OF THE ROOT IS ABSENT
 		{
 			n1=n->right;
-			n1->parent=n1;
+			n1->parent=NULL;
 			freenode(n);
 			return n1;
 		}
@@ -162,13 +165,13 @@ NODEPTR n,r;
 			if((n1->parent)->left==n1)
 			{
 				(n1->parent)->left=NULL;
-				n1->parent=n1;
+				n1->parent=NULL;
 			}
 			else
 			{
 				n1->left=n->left;
 				(n->left)->parent=n1;
-				n1->parent=n1;
+				n1->parent=NULL;
 				freenode(n);
 				return n1;
 			}
@@ -240,10 +243,10 @@ NODEPTR r;
 	n=find(r,x);
 	if(n==NULL)
 	{
-		f=0;
+	    f=0;
 	    n=find(r,x);
-		if(n->key<x)
-		n=next(n);
+	    if(n->key<x)
+	    n=next(n);
 	}
 	n1=next(n);
 	printf("%d\t",n->key);
@@ -308,10 +311,11 @@ int main()
 	printf("3.TO PERFORM LOCAL SEARCH\n");
 	printf("4.TO CHECK WHETHER A NODE IS PRESENT\n");
 	printf("5.TO FIND THE NEXT NODE\n");
-	printf("6.TO TRAVERSE INORDER\n");
-	printf("7.TO TRAVERSE PREORDER\n");
-	printf("8.TO TRAVERSE POSTORDER\n");
-	printf("9.TO STOP\n");
+	printf("6.TO FIND THE HEIGHT OF A NODE\n");
+	printf("7.TO TRAVERSE INORDER\n");
+	printf("8.TO TRAVERSE PREORDER\n");
+	printf("9.TO TRAVERSE POSTORDER\n");
+	printf("10.TO STOP\n");
 	while(i)
 	{
 		printf("Enter your choice:");
@@ -387,17 +391,23 @@ int main()
 				   printf("%d\n",n->key);
 				 }
 				}
-				   break;
-			case 6:inorder(root);
+			       break;
+			case 6:printf("Enter the node:");
+			       scanf("%d",&k);
+			       n=find(root,k);
+		               h=height(n);
+			       printf("Height:%d\n",h);
+			       break;
+			case 7:inorder(root);
 			       printf("\n");
 			       break;
-			case 7:preorder(root);
+			case 8:preorder(root);
 			       printf("\n");
 			       break;
-			case 8:postorder(root);
+			case 9:postorder(root);
 			       printf("\n");
 			       break;
-			case 9:i=0;
+			case 10:i=0;
 			       break;
 
 		}
